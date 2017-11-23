@@ -51,7 +51,9 @@ class AudioPlayer extends React.Component {
 
 	componentDidMount() {
 		const { id } = this.props.location.query;
-		this.props.onFetchAudioInfo(id);
+		if (id) {
+			this.props.onFetchAudioInfo(id);
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
