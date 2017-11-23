@@ -1,15 +1,8 @@
-import RootLayout from '../components/RootLayout';
-import Audio from './Audio';
+import AudioContainer from 'routes/Audio/containers/AudioContainer';
 
 const routes = (store) => ({
 	path: '/',
-	component: RootLayout,
-	indexRoute: {
-		onEnter: (nextState, replace) => replace('/audio'),
-	},
-	childRoutes: [
-		Audio(store),
-	],
+	component: AudioContainer,
 });
 
 export default routes;
