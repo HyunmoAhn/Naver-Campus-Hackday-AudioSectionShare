@@ -63,7 +63,7 @@ export const naverShareInformation = (id, startTime, endTime, content)=> (dispat
 		.then(
 			(data) => {
 				dispatch(audioShareInformationSuccess(data));
-				const sharedURL = 'http://127.0.0.1:4000/audio?id=${data.id}&title=audio_share&endTime=${endTime}&startTime=${startTime}';
+				const sharedURL = `${API.CLIENT_URL}?id=${data.id}&title=audio_share&endTime=${endTime}&startTime=${startTime}`;
 				window.open(`http://share.naver.com/web/shareView.nhn?url=${encodeURIComponent(sharedURL)}`);
 			},
 			(error) => {
@@ -92,7 +92,7 @@ export const faceBookShareInformation = (id, startTime, endTime, content)=> (dis
 		.then(
 			(data) => {
 				dispatch(audioShareInformationSuccess(data));
-				const sharedURL = `http://127.0.0.1:4000/audio?id=${data.id}&endTime=${endTime}&startTime=${startTime}`;
+				const sharedURL = `${API.CLIENT_URL}?id=${data.id}&endTime=${endTime}&startTime=${startTime}`;
 				window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(sharedURL)}&amp;src=sdkpreparse`)
 			},
 			(error) => {
