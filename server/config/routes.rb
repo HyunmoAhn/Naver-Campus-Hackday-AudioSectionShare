@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-    get 'audio/info' => "audio#info"
+    get 'audio/info_list' => "audio#info_list"
+    get 'audio/info_share' => "audio#info_share"
     post 'audio/share' => "audio#share"
     get 'audio/list' => "audio#list"
     #get 'audio/highlight' => "audio#highlight"
