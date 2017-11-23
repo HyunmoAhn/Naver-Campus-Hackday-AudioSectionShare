@@ -1,8 +1,8 @@
-import AudioContainer from 'routes/Audio/containers/AudioContainer';
+import AudioWrapper from './Audio/AudioWrapper';
 
 const routes = (store) => ({
 	path: '/',
-	component: AudioContainer,
+	component: AudioWrapper,
 });
 
 export default routes;

@@ -12,6 +12,11 @@ export const isFetchSelector = createSelector(
 	audio => audio.get('isFetch'),
 );
 
+export const listSelector = createSelector(
+	audioSelector,
+	audio => audio.get('list'),
+);
+
 export const shareContentSelector = createSelector(
 	audioSelector,
 	audio => audio.get('shareContent'),

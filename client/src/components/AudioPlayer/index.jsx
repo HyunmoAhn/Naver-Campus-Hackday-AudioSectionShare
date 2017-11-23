@@ -56,8 +56,9 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentDidMount() {
-		const { id } = this.props.location.query;
-		if (id) {
+		const { id, isList } = this.props.location.query;
+
+		if (id && !isList) {
 			this.props.onFetchAudioInfo(id);
 		}
 	}
@@ -178,6 +179,11 @@ class AudioPlayer extends React.Component {
 		});
 
 		if (!this.props.url) {
+
+			if (this.state.isSectionLoop) {
+				this.setState({ isSectionLoop: false });
+			}
+
 			return <div>
 				잠시만 기다려 주세요.
 			</div>;
