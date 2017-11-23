@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import AudioPlayerTimeBox from '../AudioPlayerTimeBox';
 import AudioPlayerVolumeBox from '../AudioPlayerVolumeBox';
+import AudioShare from '../AudioShare';
 import TimeScreen from '../TimeScreen';
 import './AudioPlayer.scss'
 
@@ -14,6 +15,8 @@ const propTypes = {
 	location: PropTypes.object,
 	src: PropTypes.string,
 	onFetchAudioInfo: PropTypes.func,
+	onShareNaver: PropTypes.func,
+	onShareFacebook: PropTypes.func,
 };
 
 const defaultProps = {
@@ -23,6 +26,8 @@ const defaultProps = {
 	url: '',
 	location: {},
 	onFetchAudioInfo() {},
+	onShareNaver() {},
+	onShareFacebook() {},
 };
 
 class AudioPlayer extends React.Component {
@@ -35,6 +40,7 @@ class AudioPlayer extends React.Component {
 			isPause: true,
 			isSetSection: false,
 			isSectionLoop: !!props.location.query.startTime && !!props.location.query.endTime,
+			isShare: false,
 			volume: 50,
 			startTime: Number(props.location.query.startTime),
 			endTime: Number(props.location.query.endTime),
@@ -59,6 +65,7 @@ class AudioPlayer extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		this.audio = new Audio(nextProps.url);
 		this.audio.autoplay = true;
+		this.audio.volume = this.state.volume / 100;
 		this.audio.onpause = () => {
 			if (this.audio.currentTime === this.audio.duration) {
 				this.audio.currentTime = 0;
@@ -214,6 +221,21 @@ class AudioPlayer extends React.Component {
 				>
 					<i className={loopBtnClassName} />
 				</button>
+				<button
+					className="AudioPlayer__share-btn"
+				  type="button"
+				  onClick={() => {
+				  	if (!this.state.isSectionLoop) {
+				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
+				  			setTimeout(() => this.setState({ message: '' }), 2000);
+						  });
+				  		return null;
+					  }
+					  this.setState({ isShare: !this.state.isShare })
+				  }}
+				>
+					<span className={cx({ 'active': this.state.isShare })}>SNS 공유하기</span>
+				</button>
 				<AudioPlayerTimeBox
 					currentTime={this.audio.currentTime}
 				  duration={this.audio.duration}
@@ -233,6 +255,20 @@ class AudioPlayer extends React.Component {
 					<div className="AudioPlayer__content">
 						{this.props.audioInfo}
 					</div>
+				}
+				{this.props.shareContent &&
+					<div className="AudioPlayer__share-content">
+						{this.props.shareContent}
+					</div>
+				}
+				{this.state.isShare && this.state.isSectionLoop &&
+					<AudioShare
+						id={this.props.location.query.id}
+						startTime={this.state.startTime}
+						endTime={this.state.endTime}
+						onFacebookShare={this.props.onShareFacebook}
+					  onNaverShare={this.props.onShareNaver}
+					/>
 				}
 			</div>
 		)

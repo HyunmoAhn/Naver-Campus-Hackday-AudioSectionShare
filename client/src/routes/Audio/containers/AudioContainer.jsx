@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import AudioPlayer from 'components/AudioPlayer'
-import { audioInformation } from 'store/audio/actions';
+import {
+	audioInformation,
+	naverShareInformation,
+	faceBookShareInformation,
+} from 'store/audio/actions';
 import * as selectors from 'store/audio/selectors';
 
 const mapStateToProps = state => ({
@@ -12,6 +16,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	onFetchAudioInfo: audioInformation,
+	onShareNaver: naverShareInformation,
+	onShareFacebook: faceBookShareInformation,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);
