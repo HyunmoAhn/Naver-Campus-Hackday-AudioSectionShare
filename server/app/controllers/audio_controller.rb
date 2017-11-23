@@ -39,4 +39,17 @@ class AudioController < ApplicationController
 	}
 	render :json => @data
     end
+   
+    def list
+	all_audio = Main.all
+	@data = []
+	all_audio.each do |list|
+	@data << {
+		id: list.id,
+		title: list.title,
+		count: list.count
+	}
+	end
+	render :json => @data
+    end
 end

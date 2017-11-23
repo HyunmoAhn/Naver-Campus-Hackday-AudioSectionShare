@@ -818,3 +818,301 @@ puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
 puma (3.11.0) lib/puma/server.rb:438:in `process_client'
 puma (3.11.0) lib/puma/server.rb:302:in `block in run'
 puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_share?share_id=9" for 220.230.185.113 at 2017-11-24 04:06:26 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"9"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=9):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMains (20171123124357)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "mains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "info" varchar, "audio_url" varchar, "count" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123124357"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateShares (20171123140839)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "shares" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "main_id" integer, "start_time" float, "end_time" float, "content" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123140839"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-23 19:07:04.084443"], ["updated_at", "2017-11-23 19:07:04.084443"]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "제가 맛 좀 볼 수 있을까요? - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요. "], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/1.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.811462"], ["updated_at", "2017-11-23 19:07:09.811462"]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "나 곧 결혼하게 됐어. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요. "], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/2.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.816842"], ["updated_at", "2017-11-23 19:07:09.816842"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "시간을 좀 더 살 수 있었으면 좋겠어요. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/3.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.820949"], ["updated_at", "2017-11-23 19:07:09.820949"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "잘되기를 바라자. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/4.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.825856"], ["updated_at", "2017-11-23 19:07:09.825856"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "당신 요즘 너무 건망증이 심해요. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/5.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.829471"], ["updated_at", "2017-11-23 19:07:09.829471"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "그렇게 말해 줘서 고맙다. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/6.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.835109"], ["updated_at", "2017-11-23 19:07:09.835109"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "왜 물으시는 건가요? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/7.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.839163"], ["updated_at", "2017-11-23 19:07:09.839163"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "너 곧 군대 가는 거야? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/8.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.843772"], ["updated_at", "2017-11-23 19:07:09.843772"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "그런 건 놓치고 싶지 않은 순간들이죠. – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/9.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.847766"], ["updated_at", "2017-11-23 19:07:09.847766"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "화요일에 시간 되시나요? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/10.mp4"], ["count", 0], ["created_at", "2017-11-23 19:07:09.852455"], ["updated_at", "2017-11-23 19:07:09.852455"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-24 04:09:15 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as */*
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:09:27 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=1):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started POST "/audio/share" for 220.230.185.113 at 2017-11-24 04:10:42 +0900
+Processing by AudioController#share as */*
+  Parameters: {"id"=>"1", "content"=>"ㄴ말하는대", "startTime"=>"10", "endTime"=>"50"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "shares" ("main_id", "start_time", "end_time", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["main_id", 1], ["start_time", 10.0], ["end_time", 50.0], ["content", "ㄴ말하는대"], ["created_at", "2017-11-23 19:10:42.756692"], ["updated_at", "2017-11-23 19:10:42.756692"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "mains" SET "count" = ?, "updated_at" = ? WHERE "mains"."id" = ?[0m  [["count", 1], ["updated_at", "2017-11-23 19:10:42.764159"], ["id", 1]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:10:49 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/audio/share" for 220.230.185.113 at 2017-11-24 04:10:59 +0900
+Processing by AudioController#share as HTML
+  Parameters: {"id"=>"1", "content"=>"asdqweasd", "startTime"=>59, "endTime"=>90, "audio"=>{"id"=>"1", "content"=>"asdqweasd", "startTime"=>59, "endTime"=>90}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "shares" ("main_id", "start_time", "end_time", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["main_id", 1], ["start_time", 59.0], ["end_time", 90.0], ["content", "asdqweasd"], ["created_at", "2017-11-23 19:10:59.543709"], ["updated_at", "2017-11-23 19:10:59.543709"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "mains" SET "count" = ?, "updated_at" = ? WHERE "mains"."id" = ?[0m  [["count", 2], ["updated_at", "2017-11-23 19:10:59.550355"], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/audio/info_share?share_id=2" for 220.230.185.113 at 2017-11-24 04:11:28 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"2"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/audio/share" for 220.230.185.113 at 2017-11-24 04:11:45 +0900
+Processing by AudioController#share as HTML
+  Parameters: {"id"=>"2", "content"=>"콘텐츠 뭐적었더라", "startTime"=>59, "endTime"=>90, "audio"=>{"id"=>"2", "content"=>"콘텐츠 뭐적었더라", "startTime"=>59, "endTime"=>90}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "shares" ("main_id", "start_time", "end_time", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["main_id", 2], ["start_time", 59.0], ["end_time", 90.0], ["content", "콘텐츠 뭐적었더라"], ["created_at", "2017-11-23 19:11:45.038240"], ["updated_at", "2017-11-23 19:11:45.038240"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "mains" SET "count" = ?, "updated_at" = ? WHERE "mains"."id" = ?[0m  [["count", 1], ["updated_at", "2017-11-23 19:11:45.045606"], ["id", 2]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/audio/info_share?share_id=3" for 220.230.185.113 at 2017-11-24 04:12:22 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"3"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:12:37 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:12:52 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:13:13 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:13:21 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 04:13:55 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_share?share_id=5" for 220.230.185.113 at 2017-11-24 05:07:10 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"5"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=5):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_share?share_id=10" for 220.230.185.113 at 2017-11-24 05:07:21 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"10"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=10):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:07:24 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:07:42 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_share" for 220.230.185.113 at 2017-11-24 05:09:11 +0900
+Processing by AudioController#info_share as HTML
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:09:11 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:09:50 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:20:05 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.3ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-24 05:20:28 +0900
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.1ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/audio/list" for 220.230.185.113 at 2017-11-24 06:29:08 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#list as */*
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT "mains".* FROM "mains"[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/audio/list" for 220.230.185.113 at 2017-11-24 06:29:16 +0900
+Processing by AudioController#list as */*
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT "mains".* FROM "mains"[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mMain Load (0.8ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/audio/list" for 220.230.185.113 at 2017-11-24 06:31:42 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#list as */*
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT "mains".* FROM "mains"[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
