@@ -63,8 +63,8 @@ export const naverShareInformation = (id, startTime, endTime, content)=> (dispat
 		.then(
 			(data) => {
 				dispatch(audioShareInformationSuccess(data));
-				const sharedURL = `${API.CLIENT_URL}?id=${data.id}&title=audio_share&endTime=${endTime}&startTime=${startTime}`;
-				window.open(`http://share.naver.com/web/shareView.nhn?url=${encodeURIComponent(sharedURL)}`);
+				const sharedURL = `${API.CLIENT_URL}?id=${data.id}&endTime=${endTime}&startTime=${startTime}`;
+				window.open(`http://share.naver.com/web/shareView.nhn?url=${encodeURI(encodeURIComponent(sharedURL))}&title=audio_share`);
 			},
 			(error) => {
 				dispatch(audioShareInformationFailure(error));
