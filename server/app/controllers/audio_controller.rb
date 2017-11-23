@@ -23,4 +23,20 @@ class AudioController < ApplicationController
         render :json => @data
     end
     
+    def share
+	share_audio = Share.new
+	share_audio.main_id = params[:id]
+	share_audio.content = params[:content]
+	share_audio.start_time = params[:startTime]
+	share_audio.end_time = params[:endTime]
+	share_audio.save
+	add = Main.find(params[:id])
+	add.count = add.count + 1
+	add.save 
+
+	@data = {
+		id: share_audio.id
+	}
+	render :json => @data
+    end
 end
