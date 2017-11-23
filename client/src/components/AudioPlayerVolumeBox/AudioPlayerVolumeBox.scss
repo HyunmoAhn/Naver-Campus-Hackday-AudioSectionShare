@@ -1,0 +1,24 @@
+.AudioPlayerVolumeBox {
+  margin-top: 5px;
+}
+
+.AudioPlayerVolumeBox__volume-controller {
+  display: inline-block;
+  margin: auto;
+  width: 50%;
+}
+
+.AudioPlayerVolumeBox__mute-btn {
+  padding: 3px;
+  margin-right: 5px;
+  background-color: transparent;
+  border: 0;
+  color: #BABABA;
+  width: 25px;
+  float: left;
+}
+
+.AudioPlayerVolumeBox__volume {
+  color: #B0B0B0;
+  margin: 10px;
+}
