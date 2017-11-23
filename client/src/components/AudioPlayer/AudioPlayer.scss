@@ -1,9 +1,9 @@
 .AudioPlayer {
   overflow: hidden;
+  min-width: 580px;
+  max-width: 800px;
   background-color: #282828;
-  border: 1px solid green;
   margin: auto;
-  width: 80%;
   text-align: center;
 }
 
