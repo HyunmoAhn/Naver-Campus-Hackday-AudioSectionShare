@@ -1,4 +1,9 @@
-import AudioPlayer from 'components/AudioPlayer'
 import { connect } from 'react-redux';
+import AudioPlayer from 'components/AudioPlayer'
+import { audioInformation } from 'store/audio/actions';
 
-export default connect(null)(AudioPlayer);
+const mapDispatchToProps = {
+	onFetchAudioInfo: audioInformation,
+};
+
+export default connect(null, mapDispatchToProps)(AudioPlayer);

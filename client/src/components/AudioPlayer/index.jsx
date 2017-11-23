@@ -9,11 +9,13 @@ import './AudioPlayer.scss'
 const propTypes = {
 	location: PropTypes.object,
 	src: PropTypes.string,
+	onFetchAudioInfo: PropTypes.func,
 };
 
 const defaultProps = {
 	location: {},
 	src: 'https://s3.ap-northeast-2.amazonaws.com/music-sample/My+Chemical+Romance-08-Welcome+To+The+Black+Parade-320k.mp3',
+	onFetchAudioInfo() {},
 };
 
 class AudioPlayer extends React.Component {
@@ -63,6 +65,11 @@ class AudioPlayer extends React.Component {
 		this.handleSetSection = this.handleSetSection.bind(this);
 		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
 		this.handleVolumeChange = this.handleVolumeChange.bind(this);
+	}
+
+	componentDidMount() {
+		const { id } = this.props.location.query;
+		this.props.onFetchAudioInfo(id);
 	}
 
 	componentWillUnmount() {
