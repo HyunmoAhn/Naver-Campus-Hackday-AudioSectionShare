@@ -61,3 +61,725 @@ Processing by AudioController#info as */*
 Completed 200 OK in 1ms (Views: 0.3ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMain Load (0.4ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mMain Load (1.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/audio/info_share?audio_id=1" for 220.230.185.113 at 2017-11-23 15:51:07 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_share as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mShare Load (0.3ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 9ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 15:51:44 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.8ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 13ms (ActiveRecord: 1.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Main with 'id'=1):
+  
+app/controllers/audio_controller.rb:16:in `info_list'
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 15:51:47 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Main with 'id'=1):
+  
+app/controllers/audio_controller.rb:16:in `info_list'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mMain Load (1.0ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "가나다라"], ["info", "ㄱㄴㄷㄹ"], ["audio_url", "123123123123"], ["count", 5], ["created_at", "2017-11-23 16:00:49.698056"], ["updated_at", "2017-11-23 16:00:49.698056"]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMain Load (1.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:06:10 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/audio/info_share?audio_id=1" for 220.230.185.113 at 2017-11-23 16:08:41 +0000
+Processing by AudioController#info_share as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 10ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_share?share_id=1" for 220.230.185.113 at 2017-11-23 16:08:48 +0000
+Processing by AudioController#info_share as HTML
+  Parameters: {"share_id"=>"1"}
+  [1m[36mShare Load (0.2ms)[0m  [1m[34mSELECT  "shares".* FROM "shares" WHERE "shares"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Share with 'id'=1):
+  
+app/controllers/audio_controller.rb:3:in `info_share'
+Started GET "/audio/info_list?list_id=1" for 220.230.185.113 at 2017-11-23 16:14:34 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"list_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Main with 'id'=):
+  
+app/controllers/audio_controller.rb:16:in `info_list'
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:14:48 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:15:29 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:16:34 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:16:37 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:16:39 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:16:46 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:18:44 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:20:25 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:23:00 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:26:50 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:27:04 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:28:07 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:30:11 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio_list/info?audio_id=1" for 220.230.185.113 at 2017-11-23 16:30:51 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/audio_list/info"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio_list/info?audio_id=1" for 220.230.185.113 at 2017-11-23 16:31:14 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/audio_list/info"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:31:35 +0000
+Processing by AudioController#info_list as */*
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/audio/info_list&audio_id=1" for 220.230.185.113 at 2017-11-23 16:33:28 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/audio/info_list&audio_id=1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_list&audio_id=1" for 220.230.185.113 at 2017-11-23 16:33:33 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/audio/info_list&audio_id=1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_list&audio_id=1" for 220.230.185.113 at 2017-11-23 16:34:02 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/audio/info_list&audio_id=1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_list&audio_id=1" for 220.230.185.113 at 2017-11-23 16:34:14 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/audio/info_list&audio_id=1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:34:57 +0000
+Processing by AudioController#info_list as */*
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:35:19 +0000
+Processing by AudioController#info_list as */*
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:35:43 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:37:04 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:37:47 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:41:18 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:45:43 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.9ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMains (20171123124357)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "mains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "info" varchar, "audio_url" varchar, "count" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123124357"]]
+  [1m[35m (11.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateShares (20171123140839)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "shares" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "main_id" integer, "start_time" float, "end_time" float, "content" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123140839"]]
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-23 16:47:36.738514"], ["updated_at", "2017-11-23 16:47:36.738514"]]
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "제가 맛 좀 볼 수 있을까요?"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요. "], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/1.mp4"], ["count", 0], ["created_at", "2017-11-23 16:48:01.653493"], ["updated_at", "2017-11-23 16:48:01.653493"]]
+  [1m[35m (8.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:55:21 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:55:51 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:56:34 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:57:16 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.4ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:57:17 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:57:39 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:57:44 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:58:04 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:58:19 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:58:31 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 16:58:53 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:01:28 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:02:10 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:03:10 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:04:52 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:05:42 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:05:57 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:06:17 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:06:49 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:06:56 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:07:16 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:08:05 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMains (20171123124357)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "mains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "info" varchar, "audio_url" varchar, "count" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123124357"]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateShares (20171123140839)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "shares" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "main_id" integer, "start_time" float, "end_time" float, "content" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123140839"]]
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-23 17:10:41.478440"], ["updated_at", "2017-11-23 17:10:41.478440"]]
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "제가 맛 좀 볼 수 있을까요? - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요. "], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/1.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.045197"], ["updated_at", "2017-11-23 17:10:49.045197"]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "나 곧 결혼하게 됐어. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요. "], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/2.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.062445"], ["updated_at", "2017-11-23 17:10:49.062445"]]
+  [1m[35m (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "시간을 좀 더 살 수 있었으면 좋겠어요. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/3.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.075922"], ["updated_at", "2017-11-23 17:10:49.075922"]]
+  [1m[35m (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "잘되기를 바라자. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/4.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.088890"], ["updated_at", "2017-11-23 17:10:49.088890"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "당신 요즘 너무 건망증이 심해요. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/5.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.099907"], ["updated_at", "2017-11-23 17:10:49.099907"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "그렇게 말해 줘서 고맙다. - 오늘의 영화 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/6.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.111530"], ["updated_at", "2017-11-23 17:10:49.111530"]]
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "왜 물으시는 건가요? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/7.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.122472"], ["updated_at", "2017-11-23 17:10:49.122472"]]
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "너 곧 군대 가는 거야? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/8.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.131707"], ["updated_at", "2017-11-23 17:10:49.131707"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "그런 건 놓치고 싶지 않은 순간들이죠. – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/9.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.142583"], ["updated_at", "2017-11-23 17:10:49.142583"]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "mains" ("title", "info", "audio_url", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "화요일에 시간 되시나요? – 오늘의 영어 회화"], ["info", "일상생활에서 유용하게 사용할 수 있는 실용적인 회화문장을 오디오클립에서 만나 보세요. \n원어민 발음과 한국어 해설을 듣고 따라하면서 즐겁게 외국어를 배울 수 있어요."], ["audio_url", "https://s3.ap-northeast-2.amazonaws.com/prayeo/10.mp4"], ["count", 0], ["created_at", "2017-11-23 17:10:49.158197"], ["updated_at", "2017-11-23 17:10:49.158197"]]
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:11:55 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/audio/info_list?audio_id=1" for 220.230.185.113 at 2017-11-23 17:14:13 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"1"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/audio/info_list?audio_id=3" for 220.230.185.113 at 2017-11-23 17:14:21 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"3"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:14:38 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:17:38 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:17:53 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:18:30 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.2ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:18:53 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:19:59 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.3ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/audio/info_list?audio_id=8" for 220.230.185.113 at 2017-11-23 17:20:37 +0000
+Processing by AudioController#info_list as HTML
+  Parameters: {"audio_id"=>"8"}
+  [1m[36mMain Load (0.1ms)[0m  [1m[34mSELECT  "mains".* FROM "mains" WHERE "mains"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
