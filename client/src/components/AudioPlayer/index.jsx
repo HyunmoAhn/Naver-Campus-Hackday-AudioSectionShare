@@ -7,14 +7,21 @@ import TimeScreen from '../TimeScreen';
 import './AudioPlayer.scss'
 
 const propTypes = {
+	audioInfo: PropTypes.string,
+	shareContent: PropTypes.string,
+	title: PropTypes.string,
+	url: PropTypes.string,
 	location: PropTypes.object,
 	src: PropTypes.string,
 	onFetchAudioInfo: PropTypes.func,
 };
 
 const defaultProps = {
+	audioInfo: '',
+	shareContent: '',
+	title: '',
+	url: '',
 	location: {},
-	src: 'https://s3.ap-northeast-2.amazonaws.com/music-sample/My+Chemical+Romance-08-Welcome+To+The+Black+Parade-320k.mp3',
 	onFetchAudioInfo() {},
 };
 
@@ -22,18 +29,33 @@ class AudioPlayer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentTime: 0,
+			currentTime: Number(props.location.query.startTime) || 0,
 			isMute: false,
 			isLoop: false,
 			isPause: true,
 			isSetSection: false,
-			isSectionLoop: !!props.location.query.startTime && props.location.query.endTime,
+			isSectionLoop: !!props.location.query.startTime && !!props.location.query.endTime,
 			volume: 50,
-			startTime: props.location.query.startTime,
-			title: '샘플 타이틀 입니다.',
-			endTime: props.location.query.endTime,
+			startTime: Number(props.location.query.startTime),
+			endTime: Number(props.location.query.endTime),
 		};
-		this.audio = new Audio(props.src);
+		this.audio = new Audio();
+		this.handleCurrentTimeChange = this.handleCurrentTimeChange.bind(this);
+		this.handleToggleMute = this.handleToggleMute.bind(this);
+		this.handleTogglePlay = this.handleTogglePlay.bind(this);
+		this.handleToggleLoop = this.handleToggleLoop.bind(this);
+		this.handleSetSection = this.handleSetSection.bind(this);
+		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
+		this.handleVolumeChange = this.handleVolumeChange.bind(this);
+	}
+
+	componentDidMount() {
+		const { id } = this.props.location.query;
+		this.props.onFetchAudioInfo(id);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.audio = new Audio(nextProps.url);
 		this.audio.autoplay = true;
 		this.audio.onpause = () => {
 			if (this.audio.currentTime === this.audio.duration) {
@@ -57,19 +79,6 @@ class AudioPlayer extends React.Component {
 				currentTime: this.audio.currentTime,
 			});
 		};
-
-		this.handleCurrentTimeChange = this.handleCurrentTimeChange.bind(this);
-		this.handleToggleMute = this.handleToggleMute.bind(this);
-		this.handleTogglePlay = this.handleTogglePlay.bind(this);
-		this.handleToggleLoop = this.handleToggleLoop.bind(this);
-		this.handleSetSection = this.handleSetSection.bind(this);
-		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
-		this.handleVolumeChange = this.handleVolumeChange.bind(this);
-	}
-
-	componentDidMount() {
-		const { id } = this.props.location.query;
-		this.props.onFetchAudioInfo(id);
 	}
 
 	componentWillUnmount() {
@@ -159,16 +168,16 @@ class AudioPlayer extends React.Component {
 			'active': this.state.isSetSection,
 		});
 
-		if (!this.audio) {
+		if (!this.props.url) {
 			return <div>
-				지원하지 않는 브라우저입니다.
+				잠시만 기다려 주세요.
 			</div>;
 		}
 
 		return (
 			<div className="AudioPlayer">
 				<div className="AudioPlayer__title">
-					{this.state.title}
+					{this.props.title}
 				</div>
 				{this.state.isSectionLoop &&
 					<button
