@@ -41,7 +41,7 @@ class AudioPlayer extends React.Component {
 			isSetSection: false,
 			isSectionLoop: !!props.location.query.startTime && !!props.location.query.endTime,
 			isShare: false,
-			volume: 0,
+			volume: 50,
 			startTime: Number(props.location.query.startTime),
 			endTime: Number(props.location.query.endTime),
 		};
@@ -63,7 +63,7 @@ class AudioPlayer extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		this.audio = new Audio(nextProps.url);
 		this.audio.autoplay = true;
-		this.audio.volume = this.state.volume;
+		this.audio.volume = this.state.volume / 100;
 		this.audio.onpause = () => {
 			if (this.audio.currentTime === this.audio.duration) {
 				this.audio.currentTime = 0;
