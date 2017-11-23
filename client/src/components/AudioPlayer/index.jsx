@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import AudioPlayerTimeBox from '../AudioPlayerTimeBox';
 import AudioPlayerVolumeBox from '../AudioPlayerVolumeBox';
+import TimeScreen from '../TimeScreen';
 import './AudioPlayer.scss'
 
 const propTypes = {
@@ -164,7 +165,10 @@ class AudioPlayer extends React.Component {
 					  type="button"
 					  onClick={this.handleSectionLoopCancel}
 					>
-						구간 반복 해제
+						<TimeScreen second={this.state.startTime} /> ~
+						<TimeScreen second={this.state.endTime} />
+						<br />
+						반복 해제
 					</button>
 				}
 				<button
