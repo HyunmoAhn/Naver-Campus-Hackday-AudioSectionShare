@@ -21,11 +21,11 @@ export const audioInformation = id => (dispatch, getState) => {
 
 	dispatch(audioInformationRequest());
 
-	return apiCall('/audio/info_share', {
+	return apiCall('/audio/info_list', {
 		baseURL: API.AUDIO,
 		params: {
-			share_id: id,
-		}
+			audio_id: id,
+		},
 	})
 		.then(
 			data => dispatch(audioInformationSuccess(data)),
