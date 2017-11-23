@@ -15,6 +15,8 @@ const propTypes = {
 	location: PropTypes.object,
 	src: PropTypes.string,
 	onFetchAudioInfo: PropTypes.func,
+	onShareNaver: PropTypes.func,
+	onShareFacebook: PropTypes.func,
 };
 
 const defaultProps = {
@@ -24,6 +26,8 @@ const defaultProps = {
 	url: '',
 	location: {},
 	onFetchAudioInfo() {},
+	onShareNaver() {},
+	onShareFacebook() {},
 };
 
 class AudioPlayer extends React.Component {
@@ -218,7 +222,15 @@ class AudioPlayer extends React.Component {
 				<button
 					className="AudioPlayer__share-btn"
 				  type="button"
-				  onClick={() => this.setState({ isShare: !this.state.isShare })}
+				  onClick={() => {
+				  	if (!this.state.isSectionLoop) {
+				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
+				  			setTimeout(() => this.setState({ message: '' }), 2000);
+						  });
+				  		return null;
+					  }
+					  this.setState({ isShare: !this.state.isShare })
+				  }}
 				>
 					<span className={cx({ 'active': this.state.isShare })}>SNS 공유하기</span>
 				</button>
@@ -242,8 +254,19 @@ class AudioPlayer extends React.Component {
 						{this.props.audioInfo}
 					</div>
 				}
-				{this.state.isShare &&
-					<AudioShare />
+				{this.props.shareContent &&
+					<div className="AudioPlayer__share-content">
+						{this.props.shareContent}
+					</div>
+				}
+				{this.state.isShare && this.state.isSectionLoop &&
+					<AudioShare
+						id={this.props.location.query.id}
+						startTime={this.state.startTime}
+						endTime={this.state.endTime}
+						onFacebookShare={this.props.onShareFacebook}
+					  onNaverShare={this.props.onShareNaver}
+					/>
 				}
 			</div>
 		)

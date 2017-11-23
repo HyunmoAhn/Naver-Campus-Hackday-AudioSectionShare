@@ -21,14 +21,82 @@ export const audioInformation = id => (dispatch, getState) => {
 
 	dispatch(audioInformationRequest());
 
-	return apiCall('/audio/info_list', {
+	return apiCall('/audio/info_share', {
 		baseURL: API.AUDIO,
 		params: {
-			audio_id: id,
+			share_id: id,
 		},
 	})
 		.then(
 			data => dispatch(audioInformationSuccess(data)),
 			err => dispatch(audioInformationFailure(err)),
+		);
+};
+
+export const {
+	audioShareInformationRequest,
+	audioShareInformationSuccess,
+	audioShareInformationFailure,
+} = createActions(
+	TYPES.AUDIO_SHARE_INFORMATION_REQUEST,
+	TYPES.AUDIO_SHARE_INFORMATION_SUCCESS,
+	TYPES.AUDIO_SHARE_INFORMATION_FAILURE,
+);
+
+export const naverShareInformation = (id, startTime, endTime, content)=> (dispatch, getState) => {
+	if (selector.isFetchSelector(getState())) {
+		return Promise.reject();
+	}
+
+	dispatch(audioShareInformationRequest());
+
+	return apiCall('/audio/share', {
+		method: 'post',
+		baseURL: API.AUDIO,
+		data: {
+			id,
+			content,
+			startTime,
+			endTime,
+		},
+	})
+		.then(
+			(data) => {
+				dispatch(audioShareInformationSuccess(data));
+				const sharedURL = 'http://127.0.0.1:4000/audio?id=${data.id}&title=audio_share&endTime=${endTime}&startTime=${startTime}';
+				window.open(`http://share.naver.com/web/shareView.nhn?url=${encodeURIComponent(sharedURL)}`);
+			},
+			(error) => {
+				dispatch(audioShareInformationFailure(error));
+			}
+		);
+};
+
+export const faceBookShareInformation = (id, startTime, endTime, content)=> (dispatch, getState) => {
+	if (selector.isFetchSelector(getState())) {
+		return Promise.reject();
+	}
+
+	dispatch(audioShareInformationRequest());
+
+	return apiCall('/audio/share', {
+		method: 'post',
+		baseURL: API.AUDIO,
+		data: {
+			id,
+			content,
+			startTime,
+			endTime,
+		},
+	})
+		.then(
+			(data) => {
+				dispatch(audioShareInformationSuccess(data));
+				const sharedURL = `http://127.0.0.1:4000/audio?id=${data.id}&endTime=${endTime}&startTime=${startTime}`;
+				window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(sharedURL)}&amp;src=sdkpreparse`)
+			},
+			(error) => {
+				dispatch(audioShareInformationFailure(error));
+			}
 		);
 };

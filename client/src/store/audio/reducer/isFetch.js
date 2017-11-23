@@ -4,10 +4,15 @@ import * as actions from '../actions';
 const initialState = false;
 
 const isFetchReducer = handleActions({
-	[actions.audioInformationRequest]: () => true,
+	[combineActions(
+		actions.audioInformationRequest,
+		actions.audioShareInformationRequest,
+	)]: () => true,
 	[combineActions(
 		actions.audioInformationSuccess,
 		actions.audioInformationFailure,
+		actions.audioShareInformationSuccess,
+		actions.audioShareInformationFailure,
 	)]: () => false,
 }, initialState);
 
