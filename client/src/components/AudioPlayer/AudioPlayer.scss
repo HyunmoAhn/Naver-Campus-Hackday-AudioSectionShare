@@ -7,6 +7,21 @@
   text-align: center;
 }
 
+.AudioPlayer__title {
+  margin: auto;
+  margin-top: 15px;
+  color: white;
+  width: 30%;
+  height: 30px;
+  overflow: auto;
+  white-space: nowrap;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
 .AudioPlayer__play-btn {
   background-color: transparent;
   border: 2px solid #BABABA;

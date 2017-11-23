@@ -28,6 +28,7 @@ class AudioPlayer extends React.Component {
 			isSectionLoop: !!props.location.query.startTime && props.location.query.endTime,
 			volume: 50,
 			startTime: props.location.query.startTime,
+			title: '샘플 타이틀 입니다.',
 			endTime: props.location.query.endTime,
 		};
 		this.audio = new Audio(props.src);
@@ -159,6 +160,9 @@ class AudioPlayer extends React.Component {
 
 		return (
 			<div className="AudioPlayer">
+				<div className="AudioPlayer__title">
+					{this.state.title}
+				</div>
 				{this.state.isSectionLoop &&
 					<button
 						className="AudioPlayer__section-loop-cancel"
