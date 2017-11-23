@@ -218,6 +218,11 @@ class AudioPlayer extends React.Component {
 						{this.state.message}
 					</div>
 				}
+				{this.props.audioInfo &&
+					<div className="AudioPlayer__content">
+						{this.props.audioInfo}
+					</div>
+				}
 			</div>
 		)
 	}
