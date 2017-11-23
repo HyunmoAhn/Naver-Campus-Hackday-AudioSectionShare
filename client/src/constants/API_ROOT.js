@@ -1,0 +1,1 @@
+export const AUDIO = 'https://naver-campus-hackday-prayeo.c9users.io';
