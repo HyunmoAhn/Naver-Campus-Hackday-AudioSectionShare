@@ -18,6 +18,18 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.AudioPlayer__section-btn {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  color: white;
+  left: -15px;
+
+  .active {
+    color: #66D36E;
+  }
+}
+
 .AudioPlayer__toggle-btn {
   position: relative;
   background-color: transparent;
@@ -28,4 +40,19 @@
   .active {
     color: #66D36E;
   }
+}
+
+.AudioPlayer__section-loop-cancel {
+  position: relative;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  margin-right: -100px;
+  left: -200px;
+}
+
+
+.AudioPlayer__message {
+  color: white;
 }

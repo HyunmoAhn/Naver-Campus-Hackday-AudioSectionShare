@@ -23,7 +23,11 @@ class AudioPlayer extends React.Component {
 			isMute: false,
 			isLoop: false,
 			isPause: true,
+			isSetSection: false,
+			isSectionLoop: !!props.location.query.startTime && props.location.query.endTime,
 			volume: 50,
+			startTime: props.location.query.startTime,
+			endTime: props.location.query.endTime,
 		};
 		this.audio = new Audio(props.src);
 		this.audio.autoplay = true;
@@ -33,6 +37,18 @@ class AudioPlayer extends React.Component {
 			}
 		};
 		this.audio.ontimeupdate = () => {
+			const { currentTime, startTime, endTime, isSectionLoop } = this.state;
+
+			if (isSectionLoop) {
+				if (startTime && currentTime < startTime) {
+					this.audio.currentTime = startTime;
+				}
+
+				if (endTime && currentTime > endTime) {
+					this.audio.currentTime = startTime;
+				}
+			}
+
 			this.setState({
 				currentTime: this.audio.currentTime,
 			});
@@ -42,6 +58,8 @@ class AudioPlayer extends React.Component {
 		this.handleToggleMute = this.handleToggleMute.bind(this);
 		this.handleTogglePlay = this.handleTogglePlay.bind(this);
 		this.handleToggleLoop = this.handleToggleLoop.bind(this);
+		this.handleSetSection = this.handleSetSection.bind(this);
+		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
 		this.handleVolumeChange = this.handleVolumeChange.bind(this);
 	}
 
@@ -75,6 +93,42 @@ class AudioPlayer extends React.Component {
 		}
 	}
 
+	handleSetSection() {
+		const { startTime, isSetSection } = this.state;
+		const currentTime = Math.round(this.audio.currentTime * 10) / 10;
+
+		this.setState({ isSetSection: !isSetSection });
+		if (!isSetSection) {
+			this.setState({
+				startTime: currentTime,
+				endTime: null,
+				isSectionLoop: false,
+			});
+		} else {
+			if (currentTime < startTime) {
+				this.setState({
+					message: '시작시간보다 끝나는 시간이 빠릅니다.',
+					startTime: null,
+				}, () => {
+					setTimeout(() => this.setState({ message: null }), 2000);
+				});
+				return null;
+			}
+			this.setState({
+				endTime: currentTime,
+				isSectionLoop: true,
+			});
+		}
+	}
+
+	handleSectionLoopCancel() {
+		this.setState({
+			isSectionLoop: false,
+			startTime: null,
+			endTime: null,
+		});
+	}
+
 	handleVolumeChange(value) {
 		if (this.audio.muted) {
 			this.audio.muted = false;
@@ -92,6 +146,9 @@ class AudioPlayer extends React.Component {
 		const loopBtnClassName = cx('fa', 'fa-retweet', {
 			'active': this.audio.loop,
 		});
+		const sectionBtnClassName = cx('fa', 'fa-exchange', {
+			'active': this.state.isSetSection,
+		});
 
 		if (!this.audio) {
 			return <div>
@@ -101,6 +158,22 @@ class AudioPlayer extends React.Component {
 
 		return (
 			<div className="AudioPlayer">
+				{this.state.isSectionLoop &&
+					<button
+						className="AudioPlayer__section-loop-cancel"
+					  type="button"
+					  onClick={this.handleSectionLoopCancel}
+					>
+						구간 반복 해제
+					</button>
+				}
+				<button
+					className="AudioPlayer__section-btn"
+				  type="button"
+				  onClick={this.handleSetSection}
+				>
+					<i className={sectionBtnClassName} />
+				</button>
 				<button
 					className="AudioPlayer__play-btn"
 					type="button"
@@ -125,6 +198,11 @@ class AudioPlayer extends React.Component {
 				  onToggleMute={this.handleToggleMute}
 				  onVolumeChange={this.handleVolumeChange}
 				/>
+				{this.state.message &&
+					<div className="AudioPlayer__message">
+						{this.state.message}
+					</div>
+				}
 			</div>
 		)
 	}
