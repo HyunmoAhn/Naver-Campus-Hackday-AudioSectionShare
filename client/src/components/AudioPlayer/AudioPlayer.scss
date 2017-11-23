@@ -57,6 +57,20 @@
   }
 }
 
+.AudioPlayer__share-btn {
+  position: relative;
+  width: 100px;
+  margin-left: -100px;
+  background-color: transparent;
+  border: 0;
+  left: 150px;
+  color: white;
+
+  .active {
+    color: #66D36E;
+  }
+}
+
 .AudioPlayer__section-loop-cancel {
   background-color: transparent;
   border: 1px solid white;
