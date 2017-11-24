@@ -77,6 +77,7 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		this.audio.pause();
 		this.audio = new Audio(nextProps.url);
 		this.audio.autoplay = true;
 		this.audio.volume = this.state.volume / 100;
