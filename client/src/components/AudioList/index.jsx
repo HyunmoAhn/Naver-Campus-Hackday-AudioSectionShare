@@ -8,6 +8,7 @@ const propTypes = {
 	router: PropTypes.object,
 	onListFetch: PropTypes.func,
 	onListInfo: PropTypes.func,
+	onSetFalseSectionLoop: PropTypes.func,
 };
 
 const defaultProps = {
@@ -15,6 +16,7 @@ const defaultProps = {
 	router: {},
 	onListFetch() {},
 	onListInfo() {},
+	onSetFalseSectionLoop() {},
 };
 
 class AudioList extends React.Component {
@@ -29,7 +31,10 @@ class AudioList extends React.Component {
 						key={index}
 						router={this.props.router}
 					  item={item}
-						onListInfo={this.props.onListInfo}
+						onListInfo={(id) => {
+							this.props.onSetFalseSectionLoop();
+							this.props.onListInfo(id);
+						}}
 					/>)
 				}
 			</div>

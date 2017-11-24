@@ -12,6 +12,11 @@ export const isFetchSelector = createSelector(
 	audio => audio.get('isFetch'),
 );
 
+export const isSectionLoopSelector = createSelector(
+	audioSelector,
+	audio => audio.get('isSectionLoop'),
+);
+
 export const listSelector = createSelector(
 	audioSelector,
 	audio => audio.get('list'),

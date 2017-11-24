@@ -151,3 +151,13 @@ export const audioListFetch = () => (dispatch) => {
 			err => dispatch(audioListFetchFailure(err)),
 		);
 };
+
+export const {
+	audioSetTrueSectionLoop,
+	audioSetFalseSectionLoop,
+	audioToggleSectionLoop,
+} = createActions(
+	TYPES.AUDIO_SET_TRUE_SECTION_LOOP,
+	TYPES.AUDIO_SET_FALSE_SECTION_LOOP,
+	TYPES.AUDIO_TOOGLE_SECTION_LOOP,
+);

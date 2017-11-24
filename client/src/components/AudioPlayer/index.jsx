@@ -9,6 +9,7 @@ import './AudioPlayer.scss'
 
 const propTypes = {
 	audioInfo: PropTypes.string,
+	isSectionLoop: PropTypes.bool,
 	shareContent: PropTypes.string,
 	title: PropTypes.string,
 	url: PropTypes.string,
@@ -17,10 +18,14 @@ const propTypes = {
 	onFetchAudioInfo: PropTypes.func,
 	onShareNaver: PropTypes.func,
 	onShareFacebook: PropTypes.func,
+	onSetTrueSectionLoop: PropTypes.func,
+	onSetFalseSectionLoop: PropTypes.func,
+	onToggleSectionLoop: PropTypes.func,
 };
 
 const defaultProps = {
 	audioInfo: '',
+	isSectionLoop: false,
 	shareContent: '',
 	title: '',
 	url: '',
@@ -28,6 +33,9 @@ const defaultProps = {
 	onFetchAudioInfo() {},
 	onShareNaver() {},
 	onShareFacebook() {},
+	onSetTrueSectionLoop() {},
+	onSetFalseSectionLoop() {},
+	onToggleSectionLoop() {},
 };
 
 class AudioPlayer extends React.Component {
@@ -58,6 +66,11 @@ class AudioPlayer extends React.Component {
 	componentDidMount() {
 		const { id, isList } = this.props.location.query;
 
+		if (!!this.props.location.query.startTime &&
+			!!this.props.location.query.endTime) {
+			this.props.onSetTrueSectionLoop()
+		}
+
 		if (id && !isList) {
 			this.props.onFetchAudioInfo(id);
 		}
@@ -73,7 +86,8 @@ class AudioPlayer extends React.Component {
 			}
 		};
 		this.audio.ontimeupdate = () => {
-			const { currentTime, startTime, endTime, isSectionLoop } = this.state;
+			const { currentTime, startTime, endTime } = this.state;
+			const { isSectionLoop } = this.props;
 
 			if (isSectionLoop) {
 				if (startTime && currentTime < startTime) {
@@ -130,8 +144,8 @@ class AudioPlayer extends React.Component {
 			this.setState({
 				startTime: currentTime,
 				endTime: null,
-				isSectionLoop: false,
 			});
+			this.props.onSetFalseSectionLoop();
 		} else {
 			if (currentTime < startTime) {
 				this.setState({
@@ -144,17 +158,17 @@ class AudioPlayer extends React.Component {
 			}
 			this.setState({
 				endTime: currentTime,
-				isSectionLoop: true,
 			});
+			this.props.onSetTrueSectionLoop();
 		}
 	}
 
 	handleSectionLoopCancel() {
 		this.setState({
-			isSectionLoop: false,
 			startTime: null,
 			endTime: null,
 		});
+		this.props.onSetFalseSectionLoop();
 	}
 
 	handleVolumeChange(value) {
@@ -179,11 +193,6 @@ class AudioPlayer extends React.Component {
 		});
 
 		if (!this.props.url) {
-
-			if (this.state.isSectionLoop) {
-				this.setState({ isSectionLoop: false });
-			}
-
 			return <div>
 				잠시만 기다려 주세요.
 			</div>;
@@ -194,7 +203,7 @@ class AudioPlayer extends React.Component {
 				<div className="AudioPlayer__title">
 					{this.props.title}
 				</div>
-				{this.state.isSectionLoop &&
+				{this.props.isSectionLoop &&
 					<button
 						className="AudioPlayer__section-loop-cancel"
 					  type="button"
@@ -208,6 +217,7 @@ class AudioPlayer extends React.Component {
 				}
 				<button
 					className="AudioPlayer__section-btn"
+					disabled={this.props.isSectionLoop}
 				  type="button"
 				  onClick={this.handleSetSection}
 				>
@@ -231,7 +241,7 @@ class AudioPlayer extends React.Component {
 					className="AudioPlayer__share-btn"
 				  type="button"
 				  onClick={() => {
-				  	if (!this.state.isSectionLoop) {
+				  	if (!this.props.isSectionLoop) {
 				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
 				  			setTimeout(() => this.setState({ message: '' }), 2000);
 						  });
@@ -267,7 +277,7 @@ class AudioPlayer extends React.Component {
 						{this.props.shareContent}
 					</div>
 				}
-				{this.state.isShare && this.state.isSectionLoop &&
+				{this.state.isShare && this.props.isSectionLoop &&
 					<AudioShare
 						id={this.props.location.query.id}
 						startTime={this.state.startTime}
