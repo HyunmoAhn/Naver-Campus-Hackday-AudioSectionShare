@@ -36092,6 +36092,7 @@ var AudioPlayer = function (_React$Component) {
 		value: function componentWillReceiveProps(nextProps) {
 			var _this2 = this;
 
+			this.audio.pause();
 			this.audio = new Audio(nextProps.url);
 			this.audio.autoplay = true;
 			this.audio.volume = this.state.volume / 100;
