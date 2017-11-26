@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioShare /> should match to snapthot when render default 1`] = `
+<div
+  className="AudioShare"
+>
+  <textarea
+    className="AudioShare__textarea"
+    cols="30"
+    onChange={[Function]}
+    placeholder="공유 시 전달하고 싶은 문구를 적어주세요."
+    rows="10"
+    value=""
+  />
+  <button
+    className="AudioShare__btn AudioShare__btn-naver"
+    onClick={[Function]}
+    type="button"
+  >
+    Naver
+  </button>
+  <button
+    className="AudioShare__btn AudioShare__btn-facebook"
+    onClick={[Function]}
+    type="button"
+  >
+    Facebook
+  </button>
+</div>
+`;
