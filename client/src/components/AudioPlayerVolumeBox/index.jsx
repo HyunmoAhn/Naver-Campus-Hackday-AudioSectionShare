@@ -31,7 +31,7 @@ class AudioPlayerVolumeBox extends React.Component {
 					type="button"
 					onClick={onToggleMute}
 				>
-					<i className={volumeClassName} />
+					<i className={volumeClassName} data-name="volume-icon" />
 				</button>
 				<div
 					className="AudioPlayerVolumeBox__volume-controller range__container"
