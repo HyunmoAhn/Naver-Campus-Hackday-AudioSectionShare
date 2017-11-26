@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioPlayerTimeBox /> should match to snapshot when render default 1`] = `
+<div
+  className="AudioPlayerTimeBox"
+>
+  <TimeScreen
+    className="AudioPlayerTimeBox__currentTime"
+    second={0}
+  />
+  <div
+    className="AudioPlayerTimeBox__range range__container"
+  >
+    <input
+      className="AudioPlayerTimeBox__range-input range"
+      onChange={[Function]}
+      type="range"
+      value={NaN}
+    />
+  </div>
+  <TimeScreen
+    className="AudioPlayerTimeBox__duration"
+    second={0}
+  />
+</div>
+`;
