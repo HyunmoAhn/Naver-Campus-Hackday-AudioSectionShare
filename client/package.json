@@ -8,7 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.config.js --hot --inline --watch",
-    "build": "NODE_ENV=production webpack --config webpack.prod.config.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.config.js",
+    "test": "jest --config jest.config.json",
+    "test:watch": "yarn test -- --watch",
+    "test:coverage": "yarn test -- --coverage"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -34,8 +37,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.2.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
     "node-sass": "^4.7.1",
     "redux-devtools-extension": "^2.13.2",
     "resolve-url-loader": "^2.2.0",
