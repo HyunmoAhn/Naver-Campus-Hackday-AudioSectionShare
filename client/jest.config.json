@@ -1,0 +1,8 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+  }
+}
