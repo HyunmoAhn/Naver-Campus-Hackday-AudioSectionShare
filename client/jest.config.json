@@ -5,5 +5,6 @@
   "moduleNameMapper": {
     "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
   },
-  "setupTestFrameworkScriptFile": "<rootDir>/src/enzyme.config.js"
+  "setupTestFrameworkScriptFile": "<rootDir>/src/enzyme.config.js",
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
