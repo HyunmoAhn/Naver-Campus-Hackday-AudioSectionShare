@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioListItem /> should match to snapshot when render default 1`] = `
+<div
+  className="AudioListItem"
+  onClick={[Function]}
+>
+  <span
+    className="AudioListItem__title"
+  >
+    mock-title
+  </span>
+  <span
+    className="AudioListItem__count"
+  >
+    5
+  </span>
+</div>
+`;
