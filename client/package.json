@@ -11,7 +11,8 @@
     "build": "NODE_ENV=production webpack --config webpack.prod.config.js",
     "test": "jest --config jest.config.json",
     "test:watch": "yarn test -- --watch",
-    "test:coverage": "yarn test -- --coverage"
+    "test:coverage": "yarn test -- --coverage",
+    "coverage": "open ./coverage/lcov-report/index.html"
   },
   "dependencies": {
     "axios": "^0.17.1",
