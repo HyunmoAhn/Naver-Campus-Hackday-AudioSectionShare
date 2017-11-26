@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioList /> should match to snapshot when render default 1`] = `
+<div
+  className="AudioList"
+>
+  <AudioListItem
+    item={
+      Object {
+        "count": 5,
+        "id": "mock-id-1",
+        "title": "mock-title-1",
+      }
+    }
+    key="0"
+    onListInfo={[Function]}
+    router={Object {}}
+  />
+  <AudioListItem
+    item={
+      Object {
+        "count": 10,
+        "id": "mock-id-2",
+        "title": "mock-title-2",
+      }
+    }
+    key="1"
+    onListInfo={[Function]}
+    router={Object {}}
+  />
+</div>
+`;
