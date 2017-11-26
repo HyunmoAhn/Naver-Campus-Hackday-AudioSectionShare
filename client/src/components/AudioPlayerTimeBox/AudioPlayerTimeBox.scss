@@ -1,3 +1,8 @@
+$naver-green: #11C83A;
+$lower-bar: #ABABAB;
+$upper-bar: #404040;
+$range-length: 800px;
+
 .AudioPlayerTimeBox {
   width: 100%;
   overflow: hidden;
@@ -9,5 +14,5 @@
   width: 70%;
   text-align: center;
   vertical-align: middle;
+  cursor: ew-resize;
 }
-

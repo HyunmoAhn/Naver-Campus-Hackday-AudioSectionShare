@@ -1,0 +1,19 @@
+.AudioListItem {
+  border-bottom: 2px solid green;
+  padding: 2px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.AudioListItem__title {
+  width: 90%;
+  float: left;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+.AudioListItem__count {
+  width: 10%;
+  float: right;
+  border-left: 3px solid green;
+}

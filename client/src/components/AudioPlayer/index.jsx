@@ -3,46 +3,107 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import AudioPlayerTimeBox from '../AudioPlayerTimeBox';
 import AudioPlayerVolumeBox from '../AudioPlayerVolumeBox';
+import AudioShare from '../AudioShare';
+import TimeScreen from '../TimeScreen';
 import './AudioPlayer.scss'
 
 const propTypes = {
+	audioInfo: PropTypes.string,
+	isSectionLoop: PropTypes.bool,
+	shareContent: PropTypes.string,
+	title: PropTypes.string,
+	url: PropTypes.string,
 	location: PropTypes.object,
 	src: PropTypes.string,
+	onFetchAudioInfo: PropTypes.func,
+	onShareNaver: PropTypes.func,
+	onShareFacebook: PropTypes.func,
+	onSetTrueSectionLoop: PropTypes.func,
+	onSetFalseSectionLoop: PropTypes.func,
+	onToggleSectionLoop: PropTypes.func,
 };
 
 const defaultProps = {
+	audioInfo: '',
+	isSectionLoop: false,
+	shareContent: '',
+	title: '',
+	url: '',
 	location: {},
-	src: 'https://s3.ap-northeast-2.amazonaws.com/music-sample/My+Chemical+Romance-08-Welcome+To+The+Black+Parade-320k.mp3',
+	onFetchAudioInfo() {},
+	onShareNaver() {},
+	onShareFacebook() {},
+	onSetTrueSectionLoop() {},
+	onSetFalseSectionLoop() {},
+	onToggleSectionLoop() {},
 };
 
 class AudioPlayer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentTime: 0,
+			currentTime: Number(props.location.query.startTime) || 0,
 			isMute: false,
 			isLoop: false,
 			isPause: true,
+			isSetSection: false,
+			isSectionLoop: !!props.location.query.startTime && !!props.location.query.endTime,
+			isShare: false,
 			volume: 50,
+			startTime: Number(props.location.query.startTime),
+			endTime: Number(props.location.query.endTime),
 		};
-		this.audio = new Audio(props.src);
+		this.audio = new Audio();
+		this.handleCurrentTimeChange = this.handleCurrentTimeChange.bind(this);
+		this.handleToggleMute = this.handleToggleMute.bind(this);
+		this.handleTogglePlay = this.handleTogglePlay.bind(this);
+		this.handleToggleLoop = this.handleToggleLoop.bind(this);
+		this.handleSetSection = this.handleSetSection.bind(this);
+		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
+		this.handleVolumeChange = this.handleVolumeChange.bind(this);
+	}
+
+	componentDidMount() {
+		const { id, isList } = this.props.location.query;
+
+		if (!!this.props.location.query.startTime &&
+			!!this.props.location.query.endTime) {
+			this.props.onSetTrueSectionLoop()
+		}
+
+		if (id && !isList) {
+			this.props.onFetchAudioInfo(id);
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.audio.pause();
+		this.audio = new Audio(nextProps.url);
 		this.audio.autoplay = true;
+		this.audio.volume = this.state.volume / 100;
 		this.audio.onpause = () => {
 			if (this.audio.currentTime === this.audio.duration) {
 				this.audio.currentTime = 0;
 			}
 		};
 		this.audio.ontimeupdate = () => {
+			const { currentTime, startTime, endTime } = this.state;
+			const { isSectionLoop } = this.props;
+
+			if (isSectionLoop) {
+				if (startTime && currentTime < startTime) {
+					this.audio.currentTime = startTime;
+				}
+
+				if (endTime && currentTime > endTime) {
+					this.audio.currentTime = startTime;
+				}
+			}
+
 			this.setState({
 				currentTime: this.audio.currentTime,
 			});
 		};
-
-		this.handleCurrentTimeChange = this.handleCurrentTimeChange.bind(this);
-		this.handleToggleMute = this.handleToggleMute.bind(this);
-		this.handleTogglePlay = this.handleTogglePlay.bind(this);
-		this.handleToggleLoop = this.handleToggleLoop.bind(this);
-		this.handleVolumeChange = this.handleVolumeChange.bind(this);
 	}
 
 	componentWillUnmount() {
@@ -75,6 +136,42 @@ class AudioPlayer extends React.Component {
 		}
 	}
 
+	handleSetSection() {
+		const { startTime, isSetSection } = this.state;
+		const currentTime = Math.round(this.audio.currentTime * 10) / 10;
+
+		this.setState({ isSetSection: !isSetSection });
+		if (!isSetSection) {
+			this.setState({
+				startTime: currentTime,
+				endTime: null,
+			});
+			this.props.onSetFalseSectionLoop();
+		} else {
+			if (currentTime < startTime) {
+				this.setState({
+					message: '시작시간보다 끝나는 시간이 빠릅니다.',
+					startTime: null,
+				}, () => {
+					setTimeout(() => this.setState({ message: null }), 2000);
+				});
+				return null;
+			}
+			this.setState({
+				endTime: currentTime,
+			});
+			this.props.onSetTrueSectionLoop();
+		}
+	}
+
+	handleSectionLoopCancel() {
+		this.setState({
+			startTime: null,
+			endTime: null,
+		});
+		this.props.onSetFalseSectionLoop();
+	}
+
 	handleVolumeChange(value) {
 		if (this.audio.muted) {
 			this.audio.muted = false;
@@ -92,15 +189,41 @@ class AudioPlayer extends React.Component {
 		const loopBtnClassName = cx('fa', 'fa-retweet', {
 			'active': this.audio.loop,
 		});
+		const sectionBtnClassName = cx('fa', 'fa-exchange', {
+			'active': this.state.isSetSection,
+		});
 
-		if (!this.audio) {
+		if (!this.props.url) {
 			return <div>
-				지원하지 않는 브라우저입니다.
+				잠시만 기다려 주세요.
 			</div>;
 		}
 
 		return (
 			<div className="AudioPlayer">
+				<div className="AudioPlayer__title">
+					{this.props.title}
+				</div>
+				{this.props.isSectionLoop &&
+					<button
+						className="AudioPlayer__section-loop-cancel"
+					  type="button"
+					  onClick={this.handleSectionLoopCancel}
+					>
+						<TimeScreen second={this.state.startTime} /> ~
+						<TimeScreen second={this.state.endTime} />
+						<br />
+						반복 해제
+					</button>
+				}
+				<button
+					className="AudioPlayer__section-btn"
+					disabled={this.props.isSectionLoop}
+				  type="button"
+				  onClick={this.handleSetSection}
+				>
+					<i className={sectionBtnClassName} />
+				</button>
 				<button
 					className="AudioPlayer__play-btn"
 					type="button"
@@ -115,6 +238,21 @@ class AudioPlayer extends React.Component {
 				>
 					<i className={loopBtnClassName} />
 				</button>
+				<button
+					className="AudioPlayer__share-btn"
+				  type="button"
+				  onClick={() => {
+				  	if (!this.props.isSectionLoop) {
+				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
+				  			setTimeout(() => this.setState({ message: '' }), 2000);
+						  });
+				  		return null;
+					  }
+					  this.setState({ isShare: !this.state.isShare })
+				  }}
+				>
+					<span className={cx({ 'active': this.state.isShare })}>SNS 공유하기</span>
+				</button>
 				<AudioPlayerTimeBox
 					currentTime={this.audio.currentTime}
 				  duration={this.audio.duration}
@@ -125,6 +263,30 @@ class AudioPlayer extends React.Component {
 				  onToggleMute={this.handleToggleMute}
 				  onVolumeChange={this.handleVolumeChange}
 				/>
+				{this.state.message &&
+					<div className="AudioPlayer__message">
+						{this.state.message}
+					</div>
+				}
+				{this.props.audioInfo &&
+					<div className="AudioPlayer__content">
+						{this.props.audioInfo}
+					</div>
+				}
+				{this.props.shareContent &&
+					<div className="AudioPlayer__share-content">
+						{this.props.shareContent}
+					</div>
+				}
+				{this.state.isShare && this.props.isSectionLoop &&
+					<AudioShare
+						id={this.props.location.query.id}
+						startTime={this.state.startTime}
+						endTime={this.state.endTime}
+						onFacebookShare={this.props.onShareFacebook}
+					  onNaverShare={this.props.onShareNaver}
+					/>
+				}
 			</div>
 		)
 	}

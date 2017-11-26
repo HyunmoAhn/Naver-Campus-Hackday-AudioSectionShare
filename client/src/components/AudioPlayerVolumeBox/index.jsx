@@ -34,9 +34,10 @@ class AudioPlayerVolumeBox extends React.Component {
 					<i className={volumeClassName} />
 				</button>
 				<div
-					className="AudioPlayerVolumeBox__volume-controller"
+					className="AudioPlayerVolumeBox__volume-controller range__container"
 				>
 					<input
+						className="range"
 						type="range"
 						value={volume}
 						onChange={e => onVolumeChange(e.target.value)}

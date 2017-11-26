@@ -24,9 +24,10 @@ class AudioPlayerTimeBox extends React.Component {
 			<div className="AudioPlayerTimeBox">
 				<TimeScreen className="AudioPlayerTimeBox__currentTime" second={currentTime} />
 				<div
-					className="AudioPlayerTimeBox__range"
+					className="AudioPlayerTimeBox__range range__container"
 				>
 					<input
+						className="AudioPlayerTimeBox__range-input range"
 						type="range"
 						value={relativeCurrentTime}
 						onChange={onCurrentTimeChange}

@@ -21,6 +21,10 @@ class TimeScreen extends React.Component {
 		const remainSecond = number % 60;
 		const resultSecond = remainSecond >= 10 ? remainSecond : `0${remainSecond}`;
 
+		if (isNaN(second)) {
+			return null;
+		}
+
 		return (
 			<span className={cx('TimeScreen', className)}>
 				{parseInt(minute)}:{resultSecond}

@@ -1,10 +1,25 @@
 .AudioPlayer {
   overflow: hidden;
+  min-width: 580px;
+  max-width: 800px;
   background-color: #282828;
-  border: 1px solid green;
   margin: auto;
-  width: 80%;
   text-align: center;
+}
+
+.AudioPlayer__title {
+  margin: auto;
+  margin-top: 15px;
+  color: white;
+  width: 30%;
+  height: 30px;
+  overflow: auto;
+  white-space: nowrap;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 
 .AudioPlayer__play-btn {
@@ -18,6 +33,18 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.AudioPlayer__section-btn {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  color: white;
+  left: -15px;
+
+  .active {
+    color: #66D36E;
+  }
+}
+
 .AudioPlayer__toggle-btn {
   position: relative;
   background-color: transparent;
@@ -28,4 +55,54 @@
   .active {
     color: #66D36E;
   }
+}
+
+.AudioPlayer__share-btn {
+  position: relative;
+  width: 100px;
+  margin-left: -100px;
+  background-color: transparent;
+  border: 0;
+  left: 150px;
+  color: white;
+
+  .active {
+    color: #66D36E;
+  }
+}
+
+.AudioPlayer__message {
+  color: red;
+}
+
+.AudioPlayer__section-loop-cancel {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  position: relative;
+  width: 140px;
+  margin-right: -140px;
+  left: -200px;
+  top: -10px;
+  height: 35px;
+  margin-bottom: -35px;
+}
+
+.AudioPlayer__content {
+  margin: auto;
+  clear: both;
+  text-align: center;
+  color: white;
+  width: 80%;
+  padding: 5px;
+}
+
+
+.AudioPlayer__share-content {
+  color: deepskyblue;
+  margin: auto;
+  width: 80%;
+  border: 1px solid deepskyblue;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
