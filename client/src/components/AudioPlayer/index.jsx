@@ -181,7 +181,25 @@ class AudioPlayer extends React.Component {
 	}
 
 	render() {
-		const { volume } = this.state;
+		const {
+			endTime,
+			isSetSection,
+			location,
+			message,
+			startTime,
+			volume,
+		} = this.state;
+		const {
+			audioInfo,
+			isSectionLoop,
+			isShare,
+			shareContent,
+			title,
+			url,
+			onShareFacebook,
+			onShareNaver,
+		} = this.props;
+
 		const playBtnClassName = cx('fa', {
 			'fa-play': this.audio.paused,
 			'fa-pause': !this.audio.paused,
@@ -190,10 +208,10 @@ class AudioPlayer extends React.Component {
 			'active': this.audio.loop,
 		});
 		const sectionBtnClassName = cx('fa', 'fa-exchange', {
-			'active': this.state.isSetSection,
+			'active': isSetSection,
 		});
 
-		if (!this.props.url) {
+		if (!url) {
 			return <div>
 				잠시만 기다려 주세요.
 			</div>;
@@ -202,23 +220,23 @@ class AudioPlayer extends React.Component {
 		return (
 			<div className="AudioPlayer">
 				<div className="AudioPlayer__title">
-					{this.props.title}
+					{title}
 				</div>
-				{this.props.isSectionLoop &&
+				{isSectionLoop &&
 					<button
 						className="AudioPlayer__section-loop-cancel"
 					  type="button"
 					  onClick={this.handleSectionLoopCancel}
 					>
-						<TimeScreen second={this.state.startTime} /> ~
-						<TimeScreen second={this.state.endTime} />
+						<TimeScreen second={startTime} /> ~
+						<TimeScreen second={endTime} />
 						<br />
 						반복 해제
 					</button>
 				}
 				<button
 					className="AudioPlayer__section-btn"
-					disabled={this.props.isSectionLoop}
+					disabled={isSectionLoop}
 				  type="button"
 				  onClick={this.handleSetSection}
 				>
@@ -242,16 +260,16 @@ class AudioPlayer extends React.Component {
 					className="AudioPlayer__share-btn"
 				  type="button"
 				  onClick={() => {
-				  	if (!this.props.isSectionLoop) {
+				  	if (!isSectionLoop) {
 				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
 				  			setTimeout(() => this.setState({ message: '' }), 2000);
 						  });
 				  		return null;
 					  }
-					  this.setState({ isShare: !this.state.isShare })
+					  this.setState({ isShare: !isShare })
 				  }}
 				>
-					<span className={cx({ 'active': this.state.isShare })}>SNS 공유하기</span>
+					<span className={cx({ 'active': isShare })}>SNS 공유하기</span>
 				</button>
 				<AudioPlayerTimeBox
 					currentTime={this.audio.currentTime}
@@ -263,28 +281,28 @@ class AudioPlayer extends React.Component {
 				  onToggleMute={this.handleToggleMute}
 				  onVolumeChange={this.handleVolumeChange}
 				/>
-				{this.state.message &&
+				{message &&
 					<div className="AudioPlayer__message">
-						{this.state.message}
+						{message}
 					</div>
 				}
-				{this.props.audioInfo &&
+				{audioInfo &&
 					<div className="AudioPlayer__content">
-						{this.props.audioInfo}
+						{audioInfo}
 					</div>
 				}
-				{this.props.shareContent &&
+				{shareContent &&
 					<div className="AudioPlayer__share-content">
-						{this.props.shareContent}
+						{shareContent}
 					</div>
 				}
-				{this.state.isShare && this.props.isSectionLoop &&
+				{isShare && isSectionLoop &&
 					<AudioShare
-						id={this.props.location.query.id}
-						startTime={this.state.startTime}
-						endTime={this.state.endTime}
-						onFacebookShare={this.props.onShareFacebook}
-					  onNaverShare={this.props.onShareNaver}
+						id={location.query.id}
+						startTime={startTime}
+						endTime={endTime}
+						onFacebookShare={onShareFacebook}
+					  onNaverShare={onShareNaver}
 					/>
 				}
 			</div>
