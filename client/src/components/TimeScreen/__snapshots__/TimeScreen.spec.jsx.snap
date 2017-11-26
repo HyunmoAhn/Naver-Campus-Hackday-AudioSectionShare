@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TimeScreen /> should match snapshot when props.second is NaN 1`] = `""`;
+
+exports[`<TimeScreen /> should match snapshot when remainSecond >= 10 1`] = `
+<span
+  className="TimeScreen"
+>
+  0
+  :
+  35
+</span>
+`;
+
+exports[`<TimeScreen /> should match snapshot when render default 1`] = `
+<span
+  className="TimeScreen"
+>
+  0
+  :
+  00
+</span>
+`;
