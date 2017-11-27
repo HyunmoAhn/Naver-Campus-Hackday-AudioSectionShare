@@ -43,15 +43,12 @@ class AudioPlayer extends React.Component {
 		super(props);
 		this.state = {
 			currentTime: Number(props.location.query.startTime) || 0,
-			isMute: false,
-			isLoop: false,
-			isPause: true,
+			endTime: Number(props.location.query.endTime),
 			isSetSection: false,
 			isSectionLoop: !!props.location.query.startTime && !!props.location.query.endTime,
 			isShare: false,
-			volume: 50,
 			startTime: Number(props.location.query.startTime),
-			endTime: Number(props.location.query.endTime),
+			volume: 50,
 		};
 		this.audio = new Audio();
 		this.handleCurrentTimeChange = this.handleCurrentTimeChange.bind(this);
@@ -64,10 +61,9 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentDidMount() {
-		const { id, isList } = this.props.location.query;
+		const { id, isList, startTime, endTime } = this.props.location.query;
 
-		if (!!this.props.location.query.startTime &&
-			!!this.props.location.query.endTime) {
+		if (!!startTime && !!endTime) {
 			this.props.onSetTrueSectionLoop()
 		}
 
@@ -91,7 +87,7 @@ class AudioPlayer extends React.Component {
 			const { isSectionLoop } = this.props;
 
 			if (isSectionLoop) {
-				if (startTime && currentTime < startTime) {
+				if (startTime && this.audio.currentTime < startTime) {
 					this.audio.currentTime = startTime;
 				}
 
@@ -118,17 +114,14 @@ class AudioPlayer extends React.Component {
 	}
 
 	handleToggleMute() {
-		this.setState({ isMute: !this.audio.muted });
 		this.audio.muted = !this.audio.muted;
 	}
 
 	handleToggleLoop() {
-		this.setState({ isLoop: !this.state.isLoop });
 		this.audio.loop = !this.audio.loop;
 	}
 
 	handleTogglePlay() {
-		this.setState({ isPause: !this.state.isPause });
 		if (this.audio.paused) {
 			this.audio.play();
 		} else {
