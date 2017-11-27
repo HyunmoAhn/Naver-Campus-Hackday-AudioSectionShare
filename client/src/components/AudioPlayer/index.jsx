@@ -29,7 +29,7 @@ const defaultProps = {
 	shareContent: '',
 	title: '',
 	url: '',
-	location: {},
+	location: { query: {} },
 	onFetchAudioInfo() {},
 	onShareNaver() {},
 	onShareFacebook() {},
@@ -184,7 +184,7 @@ class AudioPlayer extends React.Component {
 		const {
 			endTime,
 			isSetSection,
-			location,
+			isShare,
 			message,
 			startTime,
 			volume,
@@ -192,9 +192,9 @@ class AudioPlayer extends React.Component {
 		const {
 			audioInfo,
 			isSectionLoop,
-			isShare,
 			shareContent,
 			title,
+			location,
 			url,
 			onShareFacebook,
 			onShareNaver,
@@ -228,7 +228,8 @@ class AudioPlayer extends React.Component {
 					  type="button"
 					  onClick={this.handleSectionLoopCancel}
 					>
-						<TimeScreen second={startTime} /> ~
+						<TimeScreen second={startTime} />
+						~
 						<TimeScreen second={endTime} />
 						<br />
 						반복 해제
