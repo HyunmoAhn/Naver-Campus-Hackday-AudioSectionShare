@@ -13,7 +13,7 @@
     "test:watch": "yarn test -- --watch",
     "test:coverage": "yarn test -- --coverage",
     "coverage": "open ./coverage/lcov-report/index.html",
-    "server": "json-server --watch db.json --port 4002 --routes router.json",
+    "server": "json-server --watch db.json --port 4002 --routes router.json"
   },
   "dependencies": {
     "axios": "^0.17.1",
