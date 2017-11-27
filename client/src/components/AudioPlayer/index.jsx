@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
+import AudioButtonSet from '../AudioButtonSet';
 import AudioPlayerTimeBox from '../AudioPlayerTimeBox';
 import AudioPlayerVolumeBox from '../AudioPlayerVolumeBox';
 import AudioShare from '../AudioShare';
-import TimeScreen from '../TimeScreen';
 import './AudioPlayer.scss'
 
 const propTypes = {
@@ -58,6 +57,7 @@ class AudioPlayer extends React.Component {
 		this.handleSetSection = this.handleSetSection.bind(this);
 		this.handleSectionLoopCancel = this.handleSectionLoopCancel.bind(this);
 		this.handleVolumeChange = this.handleVolumeChange.bind(this);
+		this.handleShareSetting = this.handleShareSetting.bind(this);
 	}
 
 	componentDidMount() {
@@ -173,6 +173,16 @@ class AudioPlayer extends React.Component {
 		this.audio.volume = value / 100;
 	}
 
+	handleShareSetting() {
+		if (!this.props.isSectionLoop) {
+			this.setState({ message: '공유 구간을 설정해 주세요.'}, () => {
+				setTimeout(() => this.setState({ message: ''}), 2000);
+			});
+			return null;
+		}
+		this.setState({ isShare: !this.state.isShare })
+	}
+
 	render() {
 		const {
 			endTime,
@@ -193,16 +203,6 @@ class AudioPlayer extends React.Component {
 			onShareNaver,
 		} = this.props;
 
-		const playBtnClassName = cx('fa', {
-			'fa-play': this.audio.paused,
-			'fa-pause': !this.audio.paused,
-		});
-		const loopBtnClassName = cx('fa', 'fa-retweet', {
-			'active': this.audio.loop,
-		});
-		const sectionBtnClassName = cx('fa', 'fa-exchange', {
-			'active': isSetSection,
-		});
 
 		if (!url) {
 			return <div>
@@ -215,56 +215,19 @@ class AudioPlayer extends React.Component {
 				<div className="AudioPlayer__title">
 					{title}
 				</div>
-				{isSectionLoop &&
-					<button
-						className="AudioPlayer__section-loop-cancel"
-					  type="button"
-					  onClick={this.handleSectionLoopCancel}
-					>
-						<TimeScreen second={startTime} />
-						~
-						<TimeScreen second={endTime} />
-						<br />
-						반복 해제
-					</button>
-				}
-				<button
-					className="AudioPlayer__section-btn"
-					disabled={isSectionLoop}
-				  type="button"
-				  onClick={this.handleSetSection}
-				>
-					<i className={sectionBtnClassName} />
-				</button>
-				<button
-					className="AudioPlayer__play-btn"
-					type="button"
-					onClick={this.handleTogglePlay}
-				>
-					<i className={playBtnClassName} />
-				</button>
-				<button
-					className="AudioPlayer__toggle-btn"
-					type="button"
-					onClick={this.handleToggleLoop}
-				>
-					<i className={loopBtnClassName} />
-				</button>
-				<button
-					className="AudioPlayer__share-btn"
-				  type="button"
-				  onClick={() => {
-				  	if (!isSectionLoop) {
-				  		this.setState({ message: '공유 구간을 설정해 주세요.' }, () => {
-				  			setTimeout(() => this.setState({ message: '' }), 2000);
-						  });
-				  		return null;
-					  }
-					  this.setState({ isShare: !isShare })
-				  }}
-				>
-					<span className={cx({ 'active': isShare })}>SNS 공유하기</span>
-				</button>
+				<AudioButtonSet
+					audio={this.audio}
+					endTime={endTime}
+				  isSectionLoop={isSectionLoop}
+				  isSetSection={isSetSection}
+				  isShare={isShare}
+				  startTime={startTime}
+				  onSectionLoopCancel={this.handleSectionLoopCancel}
+				  onSetSection={this.handleSetSection}
+				  onShareSetting={this.handleShareSetting}
+				  onToggleLoop={this.handleToggleLoop}
+				  onTogglePlay={this.handleTogglePlay}
+				/>
 				<AudioPlayerTimeBox
 					currentTime={this.audio.currentTime}
 				  duration={this.audio.duration}
