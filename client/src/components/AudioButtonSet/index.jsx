@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TimeScreen from '../TimeScreen';
+import './AudioButtonSet.scss';
 
 const propTypes = {
 	audio: PropTypes.object,
@@ -46,10 +47,10 @@ class AudioButtonSet extends React.Component {
 		});
 
 		return (
-			<div>
+			<div className="AudioButtonSet">
 				{isSectionLoop &&
 				<button
-					className="AudioPlayer__section-loop-cancel"
+					className="AudioButtonSet__section-loop-cancel"
 					type="button"
 					onClick={this.props.onSectionLoopCancel}
 				>
@@ -61,7 +62,7 @@ class AudioButtonSet extends React.Component {
 				</button>
 				}
 				<button
-					className="AudioPlayer__section-btn"
+					className="AudioButtonSet__section-btn"
 					disabled={isSectionLoop}
 					type="button"
 					onClick={this.props.onSetSection}
@@ -69,21 +70,21 @@ class AudioButtonSet extends React.Component {
 					<i className={sectionBtnClassName} />
 				</button>
 				<button
-					className="AudioPlayer__play-btn"
+					className="AudioButtonSet__play-btn"
 					type="button"
 					onClick={this.props.onTogglePlay}
 				>
 					<i className={playBtnClassName} />
 				</button>
 				<button
-					className="AudioPlayer__toggle-btn"
+					className="AudioButtonSet__toggle-btn"
 					type="button"
 					onClick={this.props.onToggleLoop}
 				>
 					<i className={loopBtnClassName} />
 				</button>
 				<button
-					className="AudioPlayer__share-btn"
+					className="AudioButtonSet__share-btn"
 					type="button"
 					onClick={this.props.onShareSetting}
 				>

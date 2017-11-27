@@ -22,55 +22,6 @@
   padding-right: 9px;
 }
 
-.AudioPlayer__play-btn {
-  background-color: transparent;
-  border: 2px solid #BABABA;
-  border-radius: 50%;
-  color: white;
-  width: 35px;
-  height: 35px;
-  margin-top: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.AudioPlayer__section-btn {
-  position: relative;
-  background-color: transparent;
-  border: 0;
-  color: white;
-  left: -15px;
-
-  .active {
-    color: #66D36E;
-  }
-}
-
-.AudioPlayer__toggle-btn {
-  position: relative;
-  background-color: transparent;
-  border: 0;
-  color: white;
-  left: 15px;
-
-  .active {
-    color: #66D36E;
-  }
-}
-
-.AudioPlayer__share-btn {
-  position: relative;
-  width: 100px;
-  margin-left: -100px;
-  background-color: transparent;
-  border: 0;
-  left: 150px;
-  color: white;
-
-  .active {
-    color: #66D36E;
-  }
-}
-
 .AudioPlayer__message {
   color: red;
 }
