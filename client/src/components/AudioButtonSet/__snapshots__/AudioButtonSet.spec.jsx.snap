@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioButtonSet /> should match snapshot when props.isSelectionLoop === true 1`] = `
+<div
+  className="AudioButtonSet"
+>
+  <button
+    className="AudioButtonSet__section-loop-cancel"
+    onClick={[Function]}
+    type="button"
+  >
+    <TimeScreen
+      className=""
+      second={0}
+    />
+    ~
+    <TimeScreen
+      className=""
+      second={0}
+    />
+    <br />
+    반복 해제
+  </button>
+  <button
+    className="AudioButtonSet__section-btn"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-exchange"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__play-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-pause"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__toggle-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-retweet"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__share-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className=""
+    >
+      SNS 공유하기
+    </span>
+  </button>
+</div>
+`;
+
+exports[`<AudioButtonSet /> should match snapshot when render default 1`] = `
+<div
+  className="AudioButtonSet"
+>
+  <button
+    className="AudioButtonSet__section-btn"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-exchange"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__play-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-pause"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__toggle-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="fa fa-retweet"
+    />
+  </button>
+  <button
+    className="AudioButtonSet__share-btn"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className=""
+    >
+      SNS 공유하기
+    </span>
+  </button>
+</div>
+`;
