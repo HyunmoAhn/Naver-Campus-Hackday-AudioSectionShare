@@ -3,7 +3,13 @@
     "src/**/*.{js,jsx}"
   ],
   "moduleNameMapper": {
-    "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+    "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
+    "^components(.*)$": "<rootDir>/src/components$1",
+    "^containers(.*)$": "<rootDir>/src/containers$1",
+    "^constants(.*)$": "<rootDir>/src/constants$1",
+    "^routes(.*)$": "<rootDir>/src/routes$1",
+    "^store(.*)$": "<rootDir>/src/store$1",
+    "^utils(.*)$": "<rootDir>/src/utils$1"
   },
   "setupTestFrameworkScriptFile": "<rootDir>/src/enzyme.config.js",
   "snapshotSerializers": ["enzyme-to-json/serializer"]

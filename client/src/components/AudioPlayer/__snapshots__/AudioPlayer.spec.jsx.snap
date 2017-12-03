@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AudioPlayer /> should match to snapshot when exist props.url 1`] = `
+<div
+  className="AudioPlayer"
+>
+  <div
+    className="AudioPlayer__title"
+  />
+  <AudioButtonSet
+    audio={
+      <audio
+        preload="auto"
+      />
+    }
+    endTime={NaN}
+    isSectionLoop={false}
+    isSetSection={false}
+    isShare={false}
+    onSectionLoopCancel={[Function]}
+    onSetSection={[Function]}
+    onShareSetting={[Function]}
+    onToggleLoop={[Function]}
+    onTogglePlay={[Function]}
+    startTime={NaN}
+  />
+  <AudioPlayerTimeBox
+    currentTime={0}
+    duration={0}
+    onCurrentTimeChange={[Function]}
+  />
+  <AudioPlayerVolumeBox
+    onToggleMute={[Function]}
+    onVolumeChange={[Function]}
+    volume={50}
+  />
+</div>
+`;
+
+exports[`<AudioPlayer /> should match to snapshot when exist state.message 1`] = `
+<div
+  className="AudioPlayer"
+>
+  <div
+    className="AudioPlayer__title"
+  />
+  <AudioButtonSet
+    audio={
+      <audio
+        preload="auto"
+      />
+    }
+    endTime={NaN}
+    isSectionLoop={false}
+    isSetSection={false}
+    isShare={false}
+    onSectionLoopCancel={[Function]}
+    onSetSection={[Function]}
+    onShareSetting={[Function]}
+    onToggleLoop={[Function]}
+    onTogglePlay={[Function]}
+    startTime={NaN}
+  />
+  <AudioPlayerTimeBox
+    currentTime={0}
+    duration={0}
+    onCurrentTimeChange={[Function]}
+  />
+  <AudioPlayerVolumeBox
+    onToggleMute={[Function]}
+    onVolumeChange={[Function]}
+    volume={50}
+  />
+  <div
+    className="AudioPlayer__message"
+  >
+    mock-message
+  </div>
+</div>
+`;
+
+exports[`<AudioPlayer /> should match to snapshot when props.audioInfo 1`] = `
+<div
+  className="AudioPlayer"
+>
+  <div
+    className="AudioPlayer__title"
+  />
+  <AudioButtonSet
+    audio={
+      <audio
+        preload="auto"
+      />
+    }
+    endTime={NaN}
+    isSectionLoop={false}
+    isSetSection={false}
+    isShare={false}
+    onSectionLoopCancel={[Function]}
+    onSetSection={[Function]}
+    onShareSetting={[Function]}
+    onToggleLoop={[Function]}
+    onTogglePlay={[Function]}
+    startTime={NaN}
+  />
+  <AudioPlayerTimeBox
+    currentTime={0}
+    duration={0}
+    onCurrentTimeChange={[Function]}
+  />
+  <AudioPlayerVolumeBox
+    onToggleMute={[Function]}
+    onVolumeChange={[Function]}
+    volume={50}
+  />
+  <div
+    className="AudioPlayer__content"
+  >
+    mock-audio-info
+  </div>
+</div>
+`;
+
+exports[`<AudioPlayer /> should match to snapshot when render default 1`] = `
+<div>
+  잠시만 기다려 주세요.
+</div>
+`;
+
+exports[`<AudioPlayer /> should match to snapshot when shareContent 1`] = `
+<div
+  className="AudioPlayer"
+>
+  <div
+    className="AudioPlayer__title"
+  />
+  <AudioButtonSet
+    audio={
+      <audio
+        preload="auto"
+      />
+    }
+    endTime={NaN}
+    isSectionLoop={false}
+    isSetSection={false}
+    isShare={false}
+    onSectionLoopCancel={[Function]}
+    onSetSection={[Function]}
+    onShareSetting={[Function]}
+    onToggleLoop={[Function]}
+    onTogglePlay={[Function]}
+    startTime={NaN}
+  />
+  <AudioPlayerTimeBox
+    currentTime={0}
+    duration={0}
+    onCurrentTimeChange={[Function]}
+  />
+  <AudioPlayerVolumeBox
+    onToggleMute={[Function]}
+    onVolumeChange={[Function]}
+    volume={50}
+  />
+  <div
+    className="AudioPlayer__share-content"
+  >
+    mock-share-content
+  </div>
+</div>
+`;
