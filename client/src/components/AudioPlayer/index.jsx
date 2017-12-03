@@ -82,6 +82,7 @@ class AudioPlayer extends React.Component {
 				this.audio.currentTime = 0;
 			}
 		};
+
 		this.audio.ontimeupdate = () => {
 			const { currentTime, startTime, endTime } = this.state;
 			const { isSectionLoop } = this.props;
