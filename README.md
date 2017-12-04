@@ -6,7 +6,20 @@
 ## Audio Section Share
 - 실행 방법
 ```
+git clone https://github.com/HyunmoAhn/Naver-Campus-Hackday-AudioSectionShare.git
+cd client
+yarn && yarn start
 ```
+mock-server(json-server)실행
+```
+yarn server
+```
+
+test 커버리지 확인
+```
+yarn test:coverage && yarn coverage
+```
+
 
 - 기술 스택
     - React(v15)
