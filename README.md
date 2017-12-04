@@ -3,6 +3,8 @@
 
 **현재 저장소는 hackday당시 작업한 코드를 fork하여 public으로 공개 후 리펙토링한 저장소입니다.**
 
+**`client`폴더의 코드는 본인이 모두 작성한 코드입니다.**
+
 ## Audio Section Share
 - 실행 방법
 ```
@@ -12,11 +14,13 @@ yarn && yarn start
 ```
 mock-server(json-server)실행
 ```
+cd client
 yarn server
 ```
 
 test 커버리지 확인
 ```
+cd client
 yarn test:coverage && yarn coverage
 ```
 
